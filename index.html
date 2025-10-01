@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackaholics Internship Portal - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Hackaholics Portal</span>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <a href="profile.html" class="nav-link">Profile</a>
+                    <a href="internships.html" class="nav-link">Internships</a>
+                    <a href="trust-score.html" class="nav-link">Trust Score</a>
+                    <a href="employer-dashboard.html" class="nav-link">Employer</a>
+                    <a href="admin-dashboard.html" class="nav-link">Admin</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="profile-menu" id="profileMenu" style="display: none;">
+                    <a href="profile.html" class="profile-link">
+                        <img src="https://via.placeholder.com/40x40?text=U" alt="Profile" class="profile-avatar">
+                        <span id="usernameDisplay">User</span>
+                    </a>
+                    <button id="logoutBtn" class="btn btn-secondary btn-sm">Logout</button>
+                </div>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Find Your Perfect Internship</h1>
+                <p class="hero-subtitle">AI-powered matching for students from rural, tribal, and remote areas</p>
+                <div class="hero-buttons">
+                    <a href="profile.html" class="btn btn-primary">Create Profile</a>
+                    <a href="internships.html" class="btn btn-secondary">Browse Internships</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10,000+</span>
+                    <span class="stat-label">Students Placed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Partner Companies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Match Success Rate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Hackaholics Portal?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered Matching</h3>
+                    <p>Our intelligent algorithm matches you with internships based on your skills, interests, and career goals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Verified Trust Score</h3>
+                    <p>Build credibility with our transparent trust scoring system based on verified credentials and skills.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Inclusive Platform</h3>
+                    <p>Designed specifically for students from rural, tribal, and remote areas with varied digital exposure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Responsive design that works perfectly on all devices, from smartphones to desktops.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certificate Verification</h3>
+                    <p>Upload and verify your certificates to increase your trust score and match quality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Career Growth</h3>
+                    <p>Access personalized dashboards and future features like soft-skill evaluation and AI interview preparation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create Your Profile</h3>
+                        <p>Fill in your details, skills, interests, and upload certificates to build your professional profile.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Get Trust Score</h3>
+                        <p>Our system calculates your trust score based on profile completeness and verified credentials.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>AI Matching</h3>
+                        <p>Our AI algorithm finds the top 5 best-fit internships based on your verified profile data.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Apply & Succeed</h3>
+                        <p>Apply to your matched internships with confidence and start your career journey.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Hackaholics Portal</h4>
+                    <p>Empowering students from rural, tribal, and remote areas to find meaningful internship opportunities through AI-powered matching and verified credentials.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> support@hackaholics.com</p>
+                    <p><i class="fas fa-phone"></i> +91-XXXX-XXXXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hackaholics Internship Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

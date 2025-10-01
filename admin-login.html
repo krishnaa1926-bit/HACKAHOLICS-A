@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Hackaholics Internship Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Hackaholics</span>
+                </a>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                    <li><a href="internships.html" class="nav-link">Internships</a></li>
+                    <li><a href="trust-score.html" class="nav-link">Trust Score</a></li>
+                    <li><a href="employer-dashboard.html" class="nav-link">Employer</a></li>
+                    <li><a href="admin-dashboard.html" class="nav-link">Admin</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="admin-login">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>Admin Access</h1>
+                    <p>Authorized personnel only</p>
+                </div>
+
+                <form id="adminLoginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="username" name="username" required placeholder="Enter admin username">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" required placeholder="Enter admin password">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login to Admin Dashboard
+                    </button>
+                </form>
+
+                <div id="loginMessage" class="login-message hidden"></div>
+
+                <div class="login-footer">
+                    <p><i class="fas fa-info-circle"></i> This area is restricted to Hackaholics team members only.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="admin-login.js"></script>
+</body>
+</html>

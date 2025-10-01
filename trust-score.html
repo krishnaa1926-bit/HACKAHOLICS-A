@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Score - Hackaholics Internship Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Hackaholics</span>
+                </a>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                    <li><a href="internships.html" class="nav-link">Internships</a></li>
+                    <li><a href="trust-score.html" class="nav-link active">Trust Score</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-small">
+        <div class="container">
+            <h1 style="margin-top: 20px;">Trust Score</h1>
+            <p>Your credibility score based on profile completeness and verification</p>
+        </div>
+    </section>
+
+    <!-- Trust Score Section -->
+    <section class="trust-score">
+        <div class="container">
+            <div class="trust-score-container">
+                <!-- Trust Score Display -->
+                <div class="trust-score-display">
+                    <div class="score-circle" id="trustScoreCircle">
+                        <div class="score-number" id="trustScore">0</div>
+                    </div>
+                    <h3>Your Trust Score</h3>
+                    <p>Complete your profile to increase your score and get better matches</p>
+
+                    <div class="score-breakdown">
+                        <div class="score-item">
+                            <span class="score-label">Profile Completeness</span>
+                            <span class="score-value" id="profileScore">0%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Certificate Verification</span>
+                            <span class="score-value" id="certScore">0%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Skills Validation</span>
+                            <span class="score-value" id="skillsScore">0%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="score-label">Quiz Performance</span>
+                            <span class="score-value" id="quizScore">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust Score Information -->
+                <div class="trust-score-info" style="margin: 30px; width: 100%;">
+                    <h3>How Trust Score Works</h3>
+                    <ul>
+                        <li>Profile completeness contributes 30% to your score</li>
+                        <li>Certificate verification adds up to 25% to your score</li>
+                        <li>Skills validation contributes 20% to your score</li>
+                        <li>Quiz performance contributes 25% to your score</li>
+                        <li>Higher scores improve your internship match quality</li>
+                    </ul>
+
+                    <div class="score-benefits">
+                        <h4>Benefits of High Trust Score</h4>
+                        <ul>
+                            <li>Better internship matches</li>
+                            <li>Priority consideration by employers</li>
+                            <li>Access to premium opportunities</li>
+                            <li>Enhanced profile visibility</li>
+                        </ul>
+                    </div>
+
+                    <div class="matches-actions">
+                        <a href="profile.html" class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Update Profile
+                        </a>
+                        <button id="takeQuizBtn" class="btn btn-success">
+                            <i class="fas fa-brain"></i> Take Assessment Quiz
+                        </button>
+                        <a href="internships.html" class="btn btn-secondary">
+                            <i class="fas fa-search"></i> View Matches
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="trust-score.html">Trust Score</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#trust-score">Trust Score</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Help Center</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#contact">Report Issue</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Careers</a></li>
+                        <li><a href="#contact">Privacy Policy</a></li>
+                        <li><a href="#contact">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hackaholics. All rights reserved. Built with ❤️ for students and developers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

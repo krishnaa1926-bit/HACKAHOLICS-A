@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackaholics Internship Portal - Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Hackaholics Portal</span>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="profile.html" class="nav-link">Profile</a>
+                    <a href="internships.html" class="nav-link">Internships</a>
+                    <a href="trust-score.html" class="nav-link">Trust Score</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Small Section -->
+    <section class="hero-small">
+        <div class="container">
+            <h1 style="margin-top:20px;">Contact Us</h1>
+            <p>Get in touch with our team for support and inquiries</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>We'd love to hear from you! Whether you have questions about internships, need technical support, or want to partner with us, our team is here to help.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Support</h4>
+                                <p>support@hackaholics.com</p>
+                                <small>We typically respond within 24 hours</small>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone Support</h4>
+                                <p>+91-XXXX-XXXXXX</p>
+                                <small>Available Monday to Friday, 9 AM - 6 PM IST</small>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Office Address</h4>
+                                <p>Hackaholics Technologies<br>
+                                Innovation Hub, Tech Park<br>
+                                Bangalore, Karnataka - 560001</p>
+                                <small>Visit us for in-person consultations</small>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                                Saturday: 10:00 AM - 2:00 PM<br>
+                                Sunday: Closed</p>
+                                <small>Emergency support available 24/7</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3>Send us a Message</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Full Name *</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address *</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactSubject">Subject *</label>
+                            <select id="contactSubject" name="contactSubject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="internship">Internship Related</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="feedback">Feedback & Suggestions</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage">Message *</label>
+                            <textarea id="contactMessage" name="contactMessage" rows="5" placeholder="Please provide details about your inquiry..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq">
+        <div class="container">
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h4>How quickly do you respond to inquiries?</h4>
+                    <p>We typically respond to all inquiries within 24 hours during business days. For urgent technical issues, we aim to respond within 4-6 hours.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I visit your office for support?</h4>
+                    <p>Yes, you can visit our office for in-person consultations. We recommend scheduling an appointment in advance to ensure our team is available to assist you.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do you offer phone support?</h4>
+                    <p>Yes, we provide phone support during business hours (Monday-Friday, 9 AM-6 PM IST). For urgent issues outside business hours, please use our emergency support line.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How can I partner with Hackaholics?</h4>
+                    <p>We're always interested in partnering with companies, educational institutions, and organizations. Please select "Partnership Opportunities" as your subject and provide details about your organization.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What information should I include in my message?</h4>
+                    <p>Please include your full name, contact information, and a detailed description of your inquiry. If you're reporting a technical issue, please include your browser information and steps to reproduce the problem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Hackaholics Portal</h4>
+                    <p>Empowering students from rural, tribal, and remote areas to find meaningful internship opportunities through AI-powered matching and verified credentials.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> support@hackaholics.com</p>
+                    <p><i class="fas fa-phone"></i> +91-XXXX-XXXXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hackaholics Internship Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

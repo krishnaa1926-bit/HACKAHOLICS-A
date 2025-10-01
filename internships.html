@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Matches - Hackaholics Internship Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Hackaholics</span>
+                </a>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                    <li><a href="internships.html" class="nav-link active">Internships</a></li>
+                    <li><a href="trust-score.html" class="nav-link">Trust Score</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-small">
+        <div class="container">
+            <h1 style="margin-top: 20px;">Internship Matches</h1>
+            <p>AI-powered internship recommendations based on your profile and preferences</p>
+        </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section class="internships">
+        <div class="container">
+            <div class="section-title">Your Perfect Matches</div>
+
+            <!-- Matches Container -->
+            <div id="matchesContainer" class="matches-container" >
+                <div class="loading-matches">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <h3>Finding your perfect matches...</h3>
+                    <p>Our AI is analyzing your profile to find the best internship opportunities</p>
+                </div>
+            </div>
+
+            <!-- Trust Score Actions -->
+            <div class="trust-actions" style="padding-bottom:2rem;">
+                <a href="trust-score.html" class="btn btn-secondary">
+                    <i class="fas fa-shield-alt"></i> View Trust Score
+                </a>
+                <a href="profile.html" class="btn btn-secondary">
+                    <i class="fas fa-edit" ></i> Update Profile
+                </a>
+            </div>
+
+            <!-- No Profile Message -->
+            <div id="noProfileMessage" class="no-matches hidden">
+                <i class="fas fa-user-slash"></i>
+                <h3>Profile Required</h3>
+                <p>Complete your profile to get personalized internship matches!</p>
+                <a href="profile.html" class="btn btn-primary">Create Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="trust-score.html">Trust Score</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#trust-score">Trust Score</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Help Center</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#contact">Report Issue</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Careers</a></li>
+                        <li><a href="#contact">Privacy Policy</a></li>
+                        <li><a href="#contact">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hackaholics. All rights reserved. Built with ❤️ for students and developers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

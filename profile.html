@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Management - Hackaholics Internship Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Hackaholics</span>
+                </a>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="profile.html" class="nav-link active">Profile</a></li>
+                    <li><a href="internships.html" class="nav-link">Internships</a></li>
+                    <li><a href="trust-score.html" class="nav-link">Trust Score</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-small">
+        <div class="container">
+            <h1 style="margin-top: 20px;">Profile Management</h1>
+            <p>Manage your profile, view your information, and keep your details up to date</p>
+        </div>
+    </section>
+
+    <!-- Profile Management Section -->
+    <section class="profile-management">
+        <div class="container">
+            <!-- Profile Display -->
+            <div id="profileDisplay" class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <h1>Your Profile</h1>
+                        <p class="profile-subtitle">Manage your personal and professional information</p>
+                    </div>
+
+                    <div class="profile-header-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h2 id="displayName">Loading...</h2>
+                            <p id="displayEmail">Loading...</p>
+                            <span id="profileStatus" class="status-badge">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-details">
+                        <div class="detail-group">
+                            <h3>Personal Information</h3>
+                            <div class="detail-item">
+                                <label>Full Name:</label>
+                                <span id="detailFullName">Loading...</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Email:</label>
+                                <span id="detailEmail">Loading...</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Phone:</label>
+                                <span id="detailPhone">Loading...</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Location:</label>
+                                <span id="detailLocation">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-group">
+                            <h3>Academic Information</h3>
+                            <div class="detail-item">
+                                <label>Degree:</label>
+                                <span id="detailDegree">Loading...</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Year of Study:</label>
+                                <span id="detailYear">Loading...</span>
+                            </div>
+                            <div class="detail-item">
+                                <label>Interests:</label>
+                                <span id="detailInterests">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-group">
+                            <h3>Skills & Certifications</h3>
+                            <div class="detail-item">
+                                <label>Skills:</label>
+                                <div id="detailSkills" class="skills-display">Loading...</div>
+                            </div>
+                            <div class="detail-item">
+                                <label>Certificates:</label>
+                                <div id="detailCertificates" class="certificates-display">Loading...</div>
+                            </div>
+                        </div>
+
+                        <div class="detail-group">
+                            <h3>Profile Statistics</h3>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-label">Trust Score</span>
+                                    <span id="currentTrustScore" class="stat-value">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Profile Created</span>
+                                    <span id="profileCreated" class="stat-value">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Last Updated</span>
+                                    <span id="lastUpdated" class="stat-value">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-actions">
+                        <button id="editProfileBtn" class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Edit Profile
+                        </button>
+                        <a href="trust-score.html" class="btn btn-secondary">
+                            <i class="fas fa-shield-alt"></i> View Trust Score
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Profile Form -->
+            <div id="editProfileForm" class="profile-container hidden">
+                <div class="profile-card">
+                    <form id="profileEditForm">
+                        <div class="form-header">
+                            <h2>Edit Profile</h2>
+                            <button type="button" id="cancelEditBtn" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Personal Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editFullName">Full Name *</label>
+                                    <input type="text" id="editFullName" name="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editEmail">Email *</label>
+                                    <input type="email" id="editEmail" name="email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editPhone">Phone Number *</label>
+                                    <input type="tel" id="editPhone" name="phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editLocation">Location *</label>
+                                    <select id="editLocation" name="location" required>
+                                        <option value="">Select Location</option>
+                                        <option value="remote">Remote</option>
+                                        <option value="bangalore">Bangalore</option>
+                                        <option value="mumbai">Mumbai</option>
+                                        <option value="delhi">Delhi</option>
+                                        <option value="hyderabad">Hyderabad</option>
+                                        <option value="chennai">Chennai</option>
+                                        <option value="pune">Pune</option>
+                                        <option value="kolkata">Kolkata</option>
+                                        <option value="flexible">Flexible</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Academic Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editDegree">Degree *</label>
+                                    <select id="editDegree" name="degree" required>
+                                        <option value="">Select Degree</option>
+                                        <option value="btech">B.Tech</option>
+                                        <option value="bca">BCA</option>
+                                        <option value="bsc">B.Sc</option>
+                                        <option value="mtech">M.Tech</option>
+                                        <option value="mca">MCA</option>
+                                        <option value="msc">M.Sc</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editYear">Year of Study *</label>
+                                    <select id="editYear" name="year" required>
+                                        <option value="">Select Year</option>
+                                        <option value="1">1st Year</option>
+                                        <option value="2">2nd Year</option>
+                                        <option value="3">3rd Year</option>
+                                        <option value="4">4th Year</option>
+                                        <option value="graduated">Graduated</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="editInterests">Interests & Goals *</label>
+                                <textarea id="editInterests" name="interests" placeholder="Tell us about your interests, career goals, and what you're looking for in an internship..." required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Skills & Expertise</h3>
+                            <div class="form-group">
+                                <label for="editSkills">Technical Skills *</label>
+                                <input type="text" id="editSkills" name="skills" placeholder="e.g., JavaScript, Python, React, Node.js, Machine Learning" required>
+                                <small>Separate multiple skills with commas</small>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Certificate Upload</h3>
+                            <div class="form-group">
+                                <label>Upload Certificates (Optional but recommended for higher trust score)</label>
+                                <div id="fileUploadArea" class="file-upload-area">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag and drop certificates here or <span class="click-to-upload">click to browse</span></p>
+                                    <small>Supports PDF, JPG, PNG (Max 10MB per file)</small>
+                                </div>
+                                <input type="file" id="certificates" name="certificates" multiple accept=".pdf,.jpg,.jpeg,.png" hidden>
+                                <div id="uploadedFiles" class="uploaded-files"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Profile
+                            </button>
+                            <button type="button" id="resetFormBtn" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delete Profile</h3>
+                <button id="closeModalBtn" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="warning-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h4>Are you sure you want to delete your profile?</h4>
+                <p>This action cannot be undone. You will lose:</p>
+                <ul>
+                    <li>All your profile information</li>
+                    <li>Uploaded certificates</li>
+                    <li>Trust score progress</li>
+                    <li>Internship matches</li>
+                </ul>
+                <p>You will be redirected to create a new profile.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelDeleteBtn" class="btn btn-secondary">Cancel</button>
+                <button id="confirmDeleteBtn" class="btn btn-primary">Delete Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal-overlay hidden">
+        <div class="modal-content quiz-modal">
+            <div class="modal-header">
+                <h3>Quick Skills Assessment</h3>
+                <p>Answer these 5 questions to verify your technical knowledge and boost your trust score!</p>
+            </div>
+            <div class="modal-body">
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quizProgress"></div>
+                    </div>
+                    <span class="progress-text">Question <span id="currentQuestion">1</span> of 5</span>
+                </div>
+
+                <div id="quizContent">
+                    <!-- Quiz questions will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="prevQuestionBtn" class="btn btn-secondary" disabled>
+                    <i class="fas fa-arrow-left"></i> Previous
+                </button>
+                <button id="nextQuestionBtn" class="btn btn-primary">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="submitQuizBtn" class="btn btn-success hidden">
+                    <i class="fas fa-check"></i> Submit Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

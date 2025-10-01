@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Dashboard - Hackaholics Internship Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="employer-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Hackaholics</span>
+                </a>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                    <li><a href="internships.html" class="nav-link">Internships</a></li>
+                    <li><a href="trust-score.html" class="nav-link">Trust Score</a></li>
+                    <li><a href="employer-dashboard.html" class="nav-link active">Employer</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-small">
+        <div class="container">
+            <h1>Employer Dashboard</h1>
+            <p>Manage internship applications and find the perfect candidates</p>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="applications">
+        <div class="container">
+            <div class="section-title">Student Applications</div>
+
+            <!-- Applications Container -->
+            <div id="applicationsContainer" class="applications-container">
+                <!-- Applications will be loaded here -->
+            </div>
+
+            <!-- No Applications Message -->
+            <div id="noApplicationsMessage" class="no-applications hidden">
+                <i class="fas fa-inbox"></i>
+                <h3>No Applications Yet</h3>
+                <p>Applications for your internships will appear here once students apply.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Hackaholics Portal</h4>
+                    <p>Connecting students with meaningful internship opportunities through AI-powered matching.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="employer-dashboard.html">Employer Dashboard</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> employers@hackaholics.com</p>
+                    <p><i class="fas fa-phone"></i> +91-XXXX-XXXXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hackaholics Internship Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Detail Modal -->
+    <div id="applicationModal" class="modal-overlay hidden">
+        <div class="modal-content application-modal">
+            <div class="modal-header">
+                <h3>Application Details</h3>
+                <button id="closeApplicationModal" class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="applicationDetails">
+                <!-- Application details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button id="rejectApplicationBtn" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Reject
+                </button>
+                <button id="acceptApplicationBtn" class="btn btn-primary">
+                    <i class="fas fa-check"></i> Accept
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="employer-dashboard.js"></script>
+</body>
+</html>
