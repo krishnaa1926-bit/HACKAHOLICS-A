@@ -9,6 +9,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Role Selection in Hero Styles */
+        .hero-role-selection {
+            margin-top: 2rem;
+        }
+        .hero-role-selection .section-title {
+            background: linear-gradient(135deg, #ffffff 0%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            text-shadow: 0 3px 6px rgba(0,0,0,0);
+            letter-spacing: 1px;
+        }
+        .role-selection-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .role-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+        .role-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        .role-button:active {
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -21,11 +65,8 @@
                 </div>
                 <div class="nav-menu" id="nav-menu">
                     <a href="index.html" class="nav-link active">Home</a>
-                    <a href="profile.html" class="nav-link">Profile</a>
-                    <a href="internships.html" class="nav-link">Internships</a>
-                    <a href="trust-score.html" class="nav-link">Trust Score</a>
-                    <a href="employer-dashboard.html" class="nav-link">Employer</a>
-                    <a href="admin-dashboard.html" class="nav-link">Admin</a>
+                   
+                  
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
 
@@ -52,9 +93,13 @@
             <div class="hero-content">
                 <h1 class="hero-title">Find Your Perfect Internship</h1>
                 <p class="hero-subtitle">AI-powered matching for students from rural, tribal, and remote areas</p>
-                <div class="hero-buttons">
-                    <a href="profile.html" class="btn btn-primary">Create Profile</a>
-                    <a href="internships.html" class="btn btn-secondary">Browse Internships</a>
+                <div class="hero-role-selection">
+                    <h2 class="section-title">Select Your Role</h2>
+                    <div class="role-selection-container">
+                        <button class="role-button" id="studentBtn" onclick="handleRoleSelection('student')">Student</button>
+                        <button class="role-button" id="employerBtn" onclick="handleRoleSelection('employer')">Employer</button>
+                        <button class="role-button" id="adminBtn" onclick="handleRoleSelection('admin')">Admin</button>
+                    </div>
                 </div>
             </div>
             <div class="hero-stats">
@@ -98,7 +143,7 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>Inclusive Platform</h3>
-                    <p>Designed specifically for students from rural, tribal, and remote areas with varied digital exposure.</p>
+                    <p>An AI-powered allocation engine ensuring fair opportunities for students from rural, tribal, and remote areas with varied digital exposure.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">

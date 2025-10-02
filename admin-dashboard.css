@@ -111,6 +111,157 @@
 .dashboard-card:nth-child(4) p { color: #3182ce; } /* Internship Applications Pending */
 .dashboard-card:nth-child(5) p { color: #38a169; } /* Approved Internships */
 .dashboard-card:nth-child(6) p { color: #38b2ac; } /* Approved Certificates */
+.dashboard-card:nth-child(7) p { color: #805ad5; } /* Total Students */
+.dashboard-card:nth-child(8) p { color: #d53f8c; } /* Total Internships */
+.dashboard-card:nth-child(9) p { color: #dd6b20; } /* Fill Rates */
+.dashboard-card:nth-child(10) p { color: #319795; } /* Average TrustScore */
+.dashboard-card:nth-child(11) p { color: #718096; } /* Rural Participants */
+
+/* Graphs Section */
+.graphs-section {
+    margin-top: 3rem;
+}
+
+.graphs-section .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.graphs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
+.graph-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.graph-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(90, 111, 208, 0.15);
+    border-color: rgba(90, 111, 208, 0.3);
+}
+
+.graph-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.graph-card canvas {
+    max-width: 100%;
+    height: 300px;
+}
+
+/* Moderation Section */
+.moderation-section {
+    margin-top: 3rem;
+}
+
+.moderation-section .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.moderation-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    gap: 2rem;
+}
+
+.moderation-panel {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.moderation-panel:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(90, 111, 208, 0.15);
+    border-color: rgba(90, 111, 208, 0.3);
+}
+
+.moderation-panel h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.moderation-table {
+    overflow-x: auto;
+}
+
+.moderation-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.moderation-table th,
+.moderation-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.moderation-table th {
+    background: #f7fafc;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.moderation-table tbody tr:hover {
+    background: #f7fafc;
+}
+
+.btn-approve,
+.btn-reject {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-approve {
+    background: #38a169;
+    color: white;
+}
+
+.btn-approve:hover {
+    background: #2f855a;
+}
+
+.btn-reject {
+    background: #e53e3e;
+    color: white;
+}
+
+.btn-reject:hover {
+    background: #c53030;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
