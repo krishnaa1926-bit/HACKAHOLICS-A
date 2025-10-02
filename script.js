@@ -68,6 +68,18 @@ const sampleInternships = [
 ];
 
 // Initialize the application
+function handleRoleSelection(role) {
+    localStorage.setItem('hackaholics_role', role);
+    updateNavBarForRole(role);
+    if (role === 'student') {
+        window.location.href = 'student-login.html';
+    } else if (role === 'employer') {
+        window.location.href = 'employer-login.html';
+    } else if (role === 'admin') {
+        window.location.href = 'admin-login.html';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 
@@ -104,34 +116,133 @@ function initializeApp() {
     // Check page access control for protected pages
     checkPageAccess();
 
-    // Auth logic
-    const signuplink = document.getElementById('signuplink');
-    const loginlink = document.getElementById('loginlink');
+    // Determine user role for nav bar
+    const role = localStorage.getItem('hackaholics_role');
+    if (role) {
+        updateNavBarForRole(role);
+    } else {
+        // Default nav bar state (logged out)
+        showLoggedOutNavBar();
+    }
+}
+
+// Update navigation bar based on role
+function updateNavBarForRole(role) {
+    const navMenu = document.getElementById('nav-menu');
     const profileMenu = document.getElementById('profileMenu');
     const usernameDisplay = document.getElementById('usernameDisplay');
+    const signuplink = document.getElementById('signuplink');
+    const loginlink = document.getElementById('loginlink');
 
-    if (signuplink && loginlink && profileMenu && usernameDisplay) {
-        const profile = localStorage.getItem('hackaholics_profile');
-        if (profile) {
-            try {
-                const user = JSON.parse(profile);
-                profileMenu.style.display = 'flex';
-                usernameDisplay.textContent = user.fullName || 'User';
-                signuplink.style.display = 'none';
-                loginlink.style.display = 'none';
-            } catch (error) {
-                console.error('Error parsing profile:', error);
-                // Fallback to logged out state
-                profileMenu.style.display = 'none';
-                signuplink.style.display = 'flex';
-                loginlink.style.display = 'flex';
-            }
-        } else {
-            profileMenu.style.display = 'none';
-            signuplink.style.display = 'flex';
-            loginlink.style.display = 'flex';
-        }
+    // Clear existing nav links
+    if (!navMenu) return;
+    navMenu.innerHTML = '';
+
+    // Check if current page is home page (index.html)
+    const currentPage = window.location.pathname.split('/').pop();
+    if (currentPage === 'index.html' || currentPage === '') {
+        // On home page, show only Contact section in navbar
+        navMenu.innerHTML = `
+            <a href="contact.html" class="nav-link active">Contact</a>
+        `;
+        if (profileMenu) profileMenu.style.display = 'none';
+        if (signuplink) signuplink.style.display = 'flex';
+        if (loginlink) loginlink.style.display = 'flex';
+        return;
     }
+
+    if (role === 'student') {
+        // Student nav links
+        navMenu.innerHTML = `
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="profile.html" class="nav-link">Profile</a>
+            <a href="internships.html" class="nav-link">Internships</a>
+            <a href="trust-score.html" class="nav-link">Trust Score</a>
+            <a href="role-selection.html" class="nav-link">Role Selection</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        `;
+        if (profileMenu && usernameDisplay) {
+            profileMenu.style.display = 'flex';
+            const profile = localStorage.getItem('hackaholics_profile');
+            if (profile) {
+                try {
+                    const user = JSON.parse(profile);
+                    usernameDisplay.textContent = user.fullName || 'User';
+                } catch {
+                    usernameDisplay.textContent = 'User';
+                }
+            } else {
+                usernameDisplay.textContent = 'User';
+            }
+        }
+        if (signuplink) signuplink.style.display = 'none';
+        if (loginlink) loginlink.style.display = 'none';
+    } else if (role === 'employer') {
+        // Employer nav links
+        navMenu.innerHTML = `
+            <a href="employer-dashboard.html" class="nav-link">Employer Dashboard</a>
+            <a href="role-selection.html" class="nav-link">Role Selection</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        `;
+        if (profileMenu) profileMenu.style.display = 'none';
+        if (signuplink) signuplink.style.display = 'none';
+        if (loginlink) loginlink.style.display = 'none';
+    } else if (role === 'admin') {
+        // Admin nav links
+        navMenu.innerHTML = `
+            <a href="admin-dashboard.html" class="nav-link">Admin Dashboard</a>
+            <a href="role-selection.html" class="nav-link">Role Selection</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        `;
+        if (profileMenu) profileMenu.style.display = 'none';
+        if (signuplink) signuplink.style.display = 'none';
+        if (loginlink) loginlink.style.display = 'none';
+    }
+}
+
+// Show default logged out nav bar
+function showLoggedOutNavBar() {
+    const navMenu = document.getElementById('nav-menu');
+    const profileMenu = document.getElementById('profileMenu');
+    const signuplink = document.getElementById('signuplink');
+    const loginlink = document.getElementById('loginlink');
+
+    if (!navMenu) return;
+
+    // Check if current page is home page (index.html)
+    const currentPage = window.location.pathname.split('/').pop();
+    if (currentPage === 'index.html' || currentPage === '') {
+        // On home page, show only Contact section in navbar
+        navMenu.innerHTML = `
+            <a href="contact.html" class="nav-link active">Contact</a>
+        `;
+        if (profileMenu) profileMenu.style.display = 'none';
+        if (signuplink) signuplink.style.display = 'flex';
+        if (loginlink) loginlink.style.display = 'flex';
+        return;
+    }
+
+    navMenu.innerHTML = `
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="role-selection.html" class="nav-link">Role Selection</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+    `;
+
+    if (profileMenu) profileMenu.style.display = 'none';
+    if (signuplink) signuplink.style.display = 'flex';
+    if (loginlink) loginlink.style.display = 'flex';
+}
+
+// Override logout to clear role
+function logout() {
+    localStorage.removeItem('hackaholics_profile');
+    localStorage.removeItem('hackaholics_role');
+    currentUser = null;
+    showNotification('Logged out successfully!', 'success');
+    showLoggedOutNavBar();
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1000);
 }
 
 // Navigation functionality
@@ -160,6 +271,12 @@ function setupNavigation() {
 
     // Handle admin navigation
     setupAdminNavigation();
+
+    // Handle employer navigation
+    setupEmployerNavigation();
+
+    // Handle student navigation
+    setupStudentNavigation();
 }
 
 function setupAdminNavigation() {
@@ -179,6 +296,96 @@ function setupAdminNavigation() {
             }
         });
     });
+}
+
+function setupEmployerNavigation() {
+    const employerLinks = document.querySelectorAll('a[href="employer-dashboard.html"]');
+
+    employerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Check if user is already logged in as employer
+            if (isEmployerLoggedIn()) {
+                // Redirect to employer dashboard
+                window.location.href = 'employer-dashboard.html';
+            } else {
+                // Redirect to employer login
+                window.location.href = 'employer-login.html';
+            }
+        });
+    });
+}
+
+function setupStudentNavigation() {
+    const studentLinks = document.querySelectorAll('a[href="profile.html"]');
+
+    studentLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Check if user is already logged in as student
+            if (isStudentLoggedIn()) {
+                // Redirect to profile/dashboard
+                window.location.href = 'profile.html';
+            } else {
+                // Redirect to student login
+                window.location.href = 'student-login.html';
+            }
+        });
+    });
+}
+
+// Utility function to check if employer is logged in
+function isEmployerLoggedIn() {
+    const session = localStorage.getItem('hackaholics_employer_session');
+    if (!session) return false;
+
+    try {
+        const sessionData = JSON.parse(session);
+        // Check if session is still valid (24 hours)
+        const loginTime = new Date(sessionData.loginTime);
+        const now = new Date();
+        const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+        if (hoursDiff > 24) {
+            // Session expired
+            localStorage.removeItem('hackaholics_employer_session');
+            return false;
+        }
+
+        return sessionData.isEmployer === true;
+    } catch (e) {
+        // Invalid session data
+        localStorage.removeItem('hackaholics_employer_session');
+        return false;
+    }
+}
+
+// Utility function to check if student is logged in
+function isStudentLoggedIn() {
+    const session = localStorage.getItem('hackaholics_student_session');
+    if (!session) return false;
+
+    try {
+        const sessionData = JSON.parse(session);
+        // Check if session is still valid (24 hours)
+        const loginTime = new Date(sessionData.loginTime);
+        const now = new Date();
+        const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+
+        if (hoursDiff > 24) {
+            // Session expired
+            localStorage.removeItem('hackaholics_student_session');
+            return false;
+        }
+
+        return sessionData.isStudent === true;
+    } catch (e) {
+        // Invalid session data
+        localStorage.removeItem('hackaholics_student_session');
+        return false;
+    }
 }
 
 // Utility function to check if admin is logged in

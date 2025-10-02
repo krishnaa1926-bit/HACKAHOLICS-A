@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Role Selection - Hackaholics Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Additional styles for role selection page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f7fa;
+            font-family: 'Inter', sans-serif;
+        }
+        .role-selection-container {
+            background: white;
+            padding: 2rem 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+        }
+        h1 {
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+        .role-button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 0;
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .role-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="role-selection-container">
+        <h1>Select Your Role</h1>
+        <button class="role-button" id="studentBtn">Student</button>
+        <button class="role-button" id="employerBtn">Employer</button>
+        <button class="role-button" id="adminBtn">Admin</button>
+    </div>
+
+    <script>
+        document.getElementById('studentBtn').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        document.getElementById('employerBtn').addEventListener('click', function() {
+            window.location.href = 'employer-dashboard.html';
+        });
+        document.getElementById('adminBtn').addEventListener('click', function() {
+            window.location.href = 'admin-login.html';
+        });
+    </script>
+</body>
+</html>
