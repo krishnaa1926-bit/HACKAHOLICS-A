@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Hackaholics Internship Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="student-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Hackaholics</span>
+                </a>
+
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="student-dashboard.html" class="nav-link active">Dashboard</a></li>
+                    <li><a href="profile.html" class="nav-link">Profile</a></li>
+                    <li><a href="internships.html" class="nav-link">Internships</a></li>
+                    <li><a href="trust-score.html" class="nav-link">Trust Score</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <button id="studentLogout" class="btn-logout" type="button">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-small">
+        <div class="container">
+            <h1>Student Dashboard</h1>
+            <p>Manage your profile, explore internships, and track your progress</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Overview -->
+    <section class="dashboard-overview">
+        <div class="container">
+            <div class="overview-cards">
+                <div class="overview-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="card-content">
+                        <h3 id="currentTrustScore">Loading...</h3>
+                        <p>Trust Score</p>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-briefcase"></i>
+                    <div class="card-content">
+                        <h3 id="appliedInternships">0</h3>
+                        <p>Applied Internships</p>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-star"></i>
+                    <div class="card-content">
+                        <h3 id="profileCompleteness">0%</h3>
+                        <p>Profile Complete</p>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <i class="fas fa-certificate"></i>
+                    <div class="card-content">
+                        <h3 id="certificatesCount">0</h3>
+                        <p>Certificates</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions Section -->
+    <section class="quick-actions">
+        <div class="container">
+            <div class="section-title">Quick Actions</div>
+            <div class="actions-grid">
+                <a href="profile.html" class="action-card">
+                    <i class="fas fa-user-edit"></i>
+                    <h3>Update Profile</h3>
+                    <p>Keep your information current</p>
+                </a>
+                <a href="internships.html" class="action-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Browse Internships</h3>
+                    <p>Find your perfect opportunity</p>
+                </a>
+                <a href="trust-score.html" class="action-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>View Trust Score</h3>
+                    <p>Check your credibility rating</p>
+                </a>
+                <a href="#" id="takeQuizBtn" class="action-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Take Quiz</h3>
+                    <p>Boost your trust score</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Activity Section -->
+    <section class="recent-activity">
+        <div class="container">
+            <div class="section-title">Recent Activity</div>
+            <div class="activity-container">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>Profile Created</h4>
+                        <p>Welcome to Hackaholics! Your profile has been successfully created.</p>
+                        <span class="activity-time" id="profileCreatedTime">Loading...</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>Trust Score Calculated</h4>
+                        <p>Your trust score has been calculated based on your profile information.</p>
+                        <span class="activity-time">Recently</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>Internship Matches Generated</h4>
+                        <p>AI-powered matching has found internships that match your skills and interests.</p>
+                        <span class="activity-time">Recently</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Internships Section -->
+    <section class="recommended-internships">
+        <div class="container">
+            <div class="section-title">Recommended for You</div>
+            <div id="recommendedContainer" class="internships-container">
+                <!-- Recommended internships will be loaded here -->
+            </div>
+            <div class="view-all-container">
+                <a href="internships.html" class="btn btn-primary">View All Internships</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracking Section -->
+    <section class="progress-tracking">
+        <div class="container">
+            <div class="section-title">Your Progress</div>
+            <div class="progress-container">
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <h4>Profile Completion</h4>
+                        <span id="profileProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="profileProgressFill"></div>
+                    </div>
+                    <p>Complete your profile to improve internship matches</p>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <h4>Skills Assessment</h4>
+                        <span id="quizProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quizProgressFill"></div>
+                    </div>
+                    <p>Take the skills quiz to boost your trust score</p>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <h4>Applications Submitted</h4>
+                        <span id="applicationsProgressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="applicationsProgressFill"></div>
+                    </div>
+                    <p>Apply to internships to start your career journey</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Hackaholics Portal</h4>
+                    <p>Connecting students with meaningful internship opportunities through AI-powered matching.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="internships.html">Internships</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> students@hackaholics.com</p>
+                    <p><i class="fas fa-phone"></i> +91-XXXX-XXXXXX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hackaholics Internship Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal-overlay hidden">
+        <div class="modal-content quiz-modal">
+            <div class="modal-header">
+                <h3>Trust Score Assessment Quiz</h3>
+                <p>Answer these questions to improve your trust score</p>
+            </div>
+            <div class="modal-body">
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quizProgressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        Question <span id="currentQuestionNum">1</span> of 8
+                    </div>
+                </div>
+                <div class="quiz-question" id="quizQuestion">
+                    <!-- Question content will be inserted here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="prevQuestionBtn" style="display: none;">Previous</button>
+                <button class="btn btn-success" id="nextQuestionBtn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="student-dashboard.js">
+
+
+
+    </script>
+ 
+</body>
+</html>

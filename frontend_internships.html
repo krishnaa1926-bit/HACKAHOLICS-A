@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Internship Listings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        input, select, button {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        th:hover {
+            background-color: #e0e0e0;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            margin: 0 5px;
+            padding: 8px 12px;
+        }
+        .pagination button.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Internship Listings</h1>
+    <div class="controls">
+        <input type="text" id="search" placeholder="Search by title or company" />
+        <select id="locationFilter">
+            <option value="">All Locations</option>
+        </select>
+        <select id="durationFilter">
+            <option value="">All Durations</option>
+        </select>
+        <select id="stipendFilter">
+            <option value="">All Stipends</option>
+            <option value="Paid">Paid</option>
+            <option value="Unpaid">Unpaid</option>
+        </select>
+    </div>
+    <table id="internshipTable">
+        <thead>
+            <tr>
+                <th data-sort="internship_title">Internship Title</th>
+                <th data-sort="company_name">Company Name</th>
+                <th data-sort="location">Location</th>
+                <th data-sort="start_date">Start Date</th>
+                <th data-sort="duration">Duration</th>
+                <th data-sort="stipend">Stipend</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <div class="pagination" id="pagination"></div>
+
+    <script>
+        let data = [];
+        let filteredData = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let sortColumn = null;
+        let sortDirection = 1;
+
+        function getStipendValue(stipend) {
+            if (!stipend) return 0;
+            if (stipend.toLowerCase().includes('unpaid')) return 0;
+            const match = stipend.match(/₹\s*([\d,]+)/);
+            if (match) {
+                return parseInt(match[1].replace(/,/g, ''));
+            }
+            return 0;
+        }
+
+        function parseData(jsonData) {
+            return jsonData.map(item => ({
+                internship_title: item.internship_title,
+                company_name: item.company_name,
+                location: item.location,
+                start_date: item.start_date,
+                duration: item.duration,
+                stipend: item.stipend
+            }));
+        }
+
+        function populateFilters() {
+            const locations = new Set();
+            const durations = new Set();
+
+            data.forEach(item => {
+                if (item.location) locations.add(item.location);
+                if (item.duration) durations.add(item.duration);
+            });
+
+            const locationFilter = document.getElementById('locationFilter');
+            locations.forEach(loc => {
+                const option = document.createElement('option');
+                option.value = loc;
+                option.textContent = loc;
+                locationFilter.appendChild(option);
+            });
+
+            const durationFilter = document.getElementById('durationFilter');
+            durations.forEach(dur => {
+                const option = document.createElement('option');
+                option.value = dur;
+                option.textContent = dur;
+                durationFilter.appendChild(option);
+            });
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const location = document.getElementById('locationFilter').value;
+            const duration = document.getElementById('durationFilter').value;
+            const stipend = document.getElementById('stipendFilter').value;
+
+            filteredData = data.filter(item => {
+                const matchesSearch = item.internship_title.toLowerCase().includes(searchTerm) ||
+                    item.company_name.toLowerCase().includes(searchTerm);
+                const matchesLocation = location ? item.location === location : true;
+                const matchesDuration = duration ? item.duration === duration : true;
+                const matchesStipend = stipend ? (stipend === 'Paid' ? getStipendValue(item.stipend) > 0 : getStipendValue(item.stipend) === 0) : true;
+                return matchesSearch && matchesLocation && matchesDuration && matchesStipend;
+            });
+
+            currentPage = 1;
+            renderTable();
+            renderPagination();
+        }
+
+        function sortData(column) {
+            if (sortColumn === column) {
+                sortDirection *= -1;
+            } else {
+                sortColumn = column;
+                sortDirection = 1;
+            }
+            filteredData.sort((a, b) => {
+                let aVal = a[column];
+                let bVal = b[column];
+                if (column === 'stipend') {
+                    aVal = getStipendValue(aVal);
+                    bVal = getStipendValue(bVal);
+                }
+                if (aVal < bVal) return -sortDirection;
+                if (aVal > bVal) return sortDirection;
+                return 0;
+            });
+            renderTable();
+        }
+
+        function renderTable() {
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageData = filteredData.slice(start, end);
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            pageData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.internship_title}</td>
+                    <td>${row.company_name}</td>
+                    <td>${row.location}</td>
+                    <td>${row.start_date}</td>
+                    <td>${row.duration}</td>
+                    <td>${row.stipend}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.classList.toggle('active', i === currentPage);
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    renderTable();
+                    renderPagination();
+                });
+                pagination.appendChild(button);
+            }
+        }
+
+        function fetchData() {
+            fetch('/api/internships')
+                .then(response => response.json())
+                .then(jsonData => {
+                    data = parseData(jsonData);
+                    filteredData = [...data];
+                    populateFilters();
+                    applyFilters();
+                })
+                .catch(error => console.error('Error loading internship data:', error));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('search').addEventListener('input', applyFilters);
+            document.getElementById('locationFilter').addEventListener('change', applyFilters);
+            document.getElementById('durationFilter').addEventListener('change', applyFilters);
+            document.getElementById('stipendFilter').addEventListener('change', applyFilters);
+            document.querySelectorAll('th[data-sort]').forEach(th => {
+                th.addEventListener('click', () => sortData(th.dataset.sort));
+            });
+            fetchData();
+        });
+    </script>
+</body>
+</html>

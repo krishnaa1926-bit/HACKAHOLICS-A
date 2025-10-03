@@ -1,3 +1,30 @@
+console.log("Script.js loaded ✅");
+function handleRoleSelection(role) {
+    switch(role) {
+        case 'student':
+            if (isStudentLoggedIn()) {
+                window.location.href = 'student-dashboard.html';
+            } else {
+                window.location.href = 'student-login.html';
+            }
+            break;
+        case 'employer':
+            window.location.href = 'employer-login.html';
+            break;
+        case 'admin':
+            window.location.href = 'admin-login.html';
+            break;
+        default:
+            console.error('Unknown role selected:', role);
+    }
+}
+
+
+// Stub function to prevent console error
+function fetchInternshipData() {
+    console.log('fetchInternshipData called - stub function');
+}
+
 // Hackaholics Internship Portal JavaScript - Original Version
 // Global variables
 let currentUser = null;
@@ -67,27 +94,10 @@ const sampleInternships = [
     }
 ];
 
-// Initialize the application
-function handleRoleSelection(role) {
-    localStorage.setItem('hackaholics_role', role);
-    updateNavBarForRole(role);
-    if (role === 'student') {
-        window.location.href = 'student-login.html';
-    } else if (role === 'employer') {
-        window.location.href = 'employer-login.html';
-    } else if (role === 'admin') {
-        window.location.href = 'admin-login.html';
-    }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 
-    // Logout functionality
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', logout);
-    }
+
 
     // Sign up and Log in functionality
     const signuplink = document.getElementById('signuplink');
@@ -104,6 +114,9 @@ document.addEventListener('DOMContentLoaded', function() {
             redirectToProfile();
         });
     }
+
+    // Fetch internship data from backend API
+    fetchInternshipData();
 });
 
 // Main initialization function
@@ -158,7 +171,6 @@ function updateNavBarForRole(role) {
             <a href="profile.html" class="nav-link">Profile</a>
             <a href="internships.html" class="nav-link">Internships</a>
             <a href="trust-score.html" class="nav-link">Trust Score</a>
-            <a href="role-selection.html" class="nav-link">Role Selection</a>
             <a href="contact.html" class="nav-link">Contact</a>
         `;
         if (profileMenu && usernameDisplay) {
@@ -236,12 +248,13 @@ function showLoggedOutNavBar() {
 // Override logout to clear role
 function logout() {
     localStorage.removeItem('hackaholics_profile');
+    localStorage.removeItem('hackaholics_student_session');
     localStorage.removeItem('hackaholics_role');
     currentUser = null;
     showNotification('Logged out successfully!', 'success');
     showLoggedOutNavBar();
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'student-login.html';
     }, 1000);
 }
 
@@ -605,7 +618,6 @@ function updateProgressCircle(score) {
     }
 }
 
-// AI-powered matching simulation
 function generateMatches(profile) {
     const matchesContainer = document.getElementById('matchesContainer');
     if (!matchesContainer) return;
@@ -1415,6 +1427,8 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmDeleteBtn.addEventListener('click', deleteProfile);
         }
 
+
+
         // Close modal on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
@@ -1780,6 +1794,7 @@ function handleQuizKeydown(e) {
 // Logout functionality
 function logout() {
     localStorage.removeItem('hackaholics_profile');
+    localStorage.removeItem('hackaholics_role');
     currentUser = null;
     showNotification('Logged out successfully!', 'success');
     setTimeout(() => {
@@ -1788,10 +1803,37 @@ function logout() {
 }
 
 // Add quiz button event listener when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    const quizBtn = document.getElementById('takeQuizBtn');
-    if (quizBtn) {
-        quizBtn.addEventListener('click', startQuiz);
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Script.js loaded ✅");
+
+    const matchesContainer = document.getElementById("matchesContainer");
+
+    fetch("http://localhost:5000/get_internships")   // ✅ use backend port
+        .then(response => response.json())
+        .then(data => {
+            console.log("Fetched Data:", data);  // Debug log
+            matchesContainer.innerHTML = ""; 
+
+            data.forEach(internship => {
+                const card = document.createElement("div");
+                card.classList.add("internship-card");
+
+                card.innerHTML = `
+                    <h2>${internship.internship_title}</h2>
+                    <p><strong>Company:</strong> ${internship.company_name}</p>
+                    <p><strong>Location:</strong> ${internship.location}</p>
+                    <p><strong>Duration:</strong> ${internship.duration}</p>
+                    <p><strong>Stipend:</strong> ${internship.stipend}</p>
+                `;
+                matchesContainer.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching internships:", error);
+            matchesContainer.innerHTML = `<p style="color:red;">Failed to load internships. Is backend running?</p>`;
+        });
 });
+fetch("http://localhost:5000/get_internships")
+
+
 

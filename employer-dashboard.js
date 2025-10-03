@@ -179,7 +179,24 @@ document.addEventListener('DOMContentLoaded', function() {
             postInternshipForm.reset();
         });
     }
+
+    // Add logout button event listener same as admin page
+    const logoutBtn = document.getElementById('employerLogout');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to logout?')) {
+                logoutEmployer();
+            }
+        });
+    }
 });
+
+// Function to logout employer, same as admin logout function
+function logoutEmployer() {
+    localStorage.removeItem('hackaholics_employer_session');
+    localStorage.removeItem('hackaholics_user_role');
+    window.location.href = 'employer-login.html';
+}
 
 function loadInternships() {
     const container = document.getElementById('applicationsContainer');
