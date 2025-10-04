@@ -116,14 +116,15 @@ document.addEventListener('DOMContentLoaded', function() {
         return users ? JSON.parse(users) : [];
     }
 
-    function setEmployerSession(email) {
-        const sessionData = {
-            email: email,
-            loginTime: new Date().toISOString(),
-            isEmployer: true
-        };
-        localStorage.setItem('hackaholics_employer_session', JSON.stringify(sessionData));
-    }
+function setEmployerSession(email) {
+    const sessionData = {
+        email: email,
+        loginTime: new Date().toISOString(),
+        isEmployer: true
+    };
+    localStorage.setItem('hackaholics_employer_session', JSON.stringify(sessionData));
+    localStorage.setItem('hackaholics_role', 'employer');
+}
 
     function showMessage(type, message) {
         loginMessage.className = `login-message ${type}`;
@@ -165,5 +166,6 @@ function isEmployerLoggedIn() {
 // Function to logout employer
 function logoutEmployer() {
     localStorage.removeItem('hackaholics_employer_session');
+    localStorage.removeItem('hackaholics_role');
     window.location.href = 'employer-login.html';
 }

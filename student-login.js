@@ -117,20 +117,21 @@ document.addEventListener('DOMContentLoaded', function () {
         return users ? JSON.parse(users) : [];
     }
 
-    function setStudentSession(email) {
-        const users = getStudentUsers();
-        const user = users.find(u => u.email === email);
+function setStudentSession(email) {
+    const users = getStudentUsers();
+    const user = users.find(u => u.email === email);
 
-        const sessionData = {
-            email: email,
-            loginTime: new Date().toISOString(),
-            isStudent: true
-        };
+    const sessionData = {
+        email: email,
+        loginTime: new Date().toISOString(),
+        isStudent: true
+    };
 
-        localStorage.setItem('hackaholics_student_session', JSON.stringify(sessionData));
-        localStorage.setItem('studentLoggedIn', "true");
-        if (user) localStorage.setItem('studentData', JSON.stringify(user));
-    }
+    localStorage.setItem('hackaholics_student_session', JSON.stringify(sessionData));
+    localStorage.setItem('studentLoggedIn', "true");
+    if (user) localStorage.setItem('studentData', JSON.stringify(user));
+    localStorage.setItem('hackaholics_role', 'student');
+}
 
     function showMessage(type, message) {
         loginMessage.className = `login-message ${type}`;
@@ -176,5 +177,6 @@ function logoutStudent() {
     localStorage.removeItem('hackaholics_student_session');
     localStorage.removeItem('studentLoggedIn');
     localStorage.removeItem('studentData');
+    localStorage.removeItem('hackaholics_role');
     window.location.href = 'student-login.html';
 }
