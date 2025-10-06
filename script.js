@@ -1835,5 +1835,115 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 fetch("http://localhost:5000/get_internships")
 
+document.addEventListener("DOMContentLoaded", function () {
+    const profileForm = document.getElementById("profileForm");
+    const messageBox = document.getElementById("profileMessage");
+
+    if (profileForm) {
+        profileForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const profileData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                skills: document.getElementById("skills").value.split(","),
+                location: document.getElementById("location").value
+            };
+
+            fetch("http://127.0.0.1:5000/create_profile", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(profileData)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    messageBox.innerHTML = `<p style="color:green;">${data.status}</p>`;
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                    messageBox.innerHTML = "<p style='color:red;'>Failed to save profile</p>";
+                });
+        });
+    }
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const displayDiv = document.getElementById("profileDisplay");
+    const editDiv = document.getElementById("editProfileForm");
+    const editBtn = document.getElementById("editProfileBtn");
+    const cancelEditBtn = document.getElementById("cancelEditBtn");
+    const form = document.getElementById("profileEditForm");
+
+    const backendURL = "https://your-backend-url.onrender.com"; // replace with real backend
+
+    // Simulate logged-in email (for now)
+    const userEmail = localStorage.getItem("userEmail") || "demo@example.com";
+
+    // Fetch and display profile
+    function loadProfile() {
+        fetch(`${backendURL}/get_profile/${userEmail}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    displayDiv.querySelector("#displayName").innerText = "No profile found";
+                    return;
+                }
+                document.getElementById("displayName").innerText = data.name;
+                document.getElementById("displayEmail").innerText = data.email;
+                document.getElementById("detailFullName").innerText = data.name;
+                document.getElementById("detailEmail").innerText = data.email;
+                document.getElementById("detailLocation").innerText = data.location;
+                document.getElementById("detailSkills").innerText = data.skills.join(", ");
+                document.getElementById("currentTrustScore").innerText = data.trust_score;
+            })
+            .catch(err => console.error(err));
+    }
+
+    // Edit button
+    if (editBtn) {
+        editBtn.addEventListener("click", () => {
+            displayDiv.classList.add("hidden");
+            editDiv.classList.remove("hidden");
+        });
+    }
+
+    // Cancel edit
+    if (cancelEditBtn) {
+        cancelEditBtn.addEventListener("click", () => {
+            editDiv.classList.add("hidden");
+            displayDiv.classList.remove("hidden");
+        });
+    }
+
+    // Submit edit form
+    if (form) {
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            const profileData = {
+                name: document.getElementById("editFullName").value,
+                email: document.getElementById("editEmail").value,
+                location: document.getElementById("editLocation").value,
+                skills: document.getElementById("editSkills").value.split(",").map(s => s.trim())
+            };
+
+            fetch(`${backendURL}/create_profile`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(profileData)
+            })
+                .then(res => res.json())
+                .then(() => {
+                    alert("Profile saved!");
+                    loadProfile();
+                    editDiv.classList.add("hidden");
+                    displayDiv.classList.remove("hidden");
+                })
+                .catch(err => console.error(err));
+        });
+    }
+
+    loadProfile();
+});
+
+
 
 
